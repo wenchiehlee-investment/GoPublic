@@ -1,0 +1,30 @@
+@startuml
+start
+:Setup Logging and Environment (utils.py);
+if (EnhancedModelTrainer available?) then (yes)
+    :Use EnhancedModelTrainer (improved_modeltrainer.py);
+else (no)
+    :Import Standard Models (standard_models.py);
+    :Import Improved Models (improved_models.py);
+    :Import Percentage Models (percentage_models.py);
+    :Import Advanced Models (advanced_models.py);
+
+    :Initialize All Models (ModelsPricePredict.py);
+    :Load Training Data (cleaned_data.csv);
+    :Prepare Features and Target (preprocessing.py);
+    :Impute Missing Values (sklearn SimpleImputer);
+    :Scale Features (sklearn StandardScaler);
+    :Add Engineered Features (preprocessing.py);
+
+    :Train Models;
+    :Evaluate Predictions (evaluation.py);
+    :Calculate Scores (evaluation.py);
+    :Generate Results DataFrame;
+    :Export Results to cleaned_data_results.csv;
+    :Export Predictions to cleaned_data_prediction.csv;
+    :Print Performance Summary (evaluation.py);
+endif
+
+:Save Trained Models (utils.py);
+stop
+@enduml
