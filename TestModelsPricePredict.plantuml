@@ -1,0 +1,34 @@
+@startuml "TestModelsPricePredict Flow"
+!theme plain
+skinparam backgroundColor white
+skinparam roundCorner 8
+skinparam ArrowColor #666666
+skinparam ActivityBackgroundColor white
+skinparam ActivityBorderColor #666666
+
+title "TestModelsPricePredict Flow"
+
+start
+
+#lightgrey:Setup Logging and Environment;
+
+#aliceblue:Validate Input Dataset;
+
+#lightcoral:Search for Models:
+1. Try current version
+2. Try lower sub-versions
+3. Try lower major versions;
+
+#lightcoral:Load Trained Models;
+
+#gold:Generate Predictions;
+
+#gold:Evaluate Results;
+
+#mistyrose:Save Output Files;
+
+#mistyrose:Print Performance Summary;
+
+stop
+
+@enduml

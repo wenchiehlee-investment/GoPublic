@@ -1,0 +1,55 @@
+@startuml "System Overview"
+!theme plain
+skinparam backgroundColor white
+skinparam roundCorner 8
+skinparam componentStyle rectangle
+skinparam ArrowColor #666666
+
+title System Overview: Train, Enhance, and Test Flows
+
+rectangle "Input Data" as input #aliceblue {
+  [cleaned_data.csv] as traindata
+  [test_data.csv] as testdata
+}
+
+rectangle "Standard Training" as train #skyblue {
+  [ModelsPricePredict.py] as trainscript
+}
+
+rectangle "Enhanced Training" as enhance #palegreen {
+  [improved_main.py] as enhancedmain
+}
+
+rectangle "Model Testing" as test #gold {
+  [TestModelsPricePredict.py] as testscript
+}
+
+rectangle "Output Files" as output #mistyrose {
+  [Models/*.pkl] as models #lightcoral
+  [*_results.csv] as results
+  [*_prediction.csv] as predictions
+  [output.log] as log
+}
+
+traindata --> trainscript
+traindata --> enhancedmain
+testdata --> testscript
+
+trainscript --> models
+trainscript --> results
+trainscript --> predictions
+trainscript --> log
+
+enhancedmain --> models
+enhancedmain --> log
+
+testscript --> results
+testscript --> predictions
+testscript --> log
+
+models <-- testscript
+
+note bottom of models #lightgrey
+  Models are versioned with fallback logic
+end note
+@enduml

@@ -1,30 +1,29 @@
-@startuml
+@startuml "ModelsPricePredict Flow"
+!theme plain
+skinparam backgroundColor white
+skinparam roundCorner 8
+skinparam ArrowColor #666666
+skinparam ActivityBackgroundColor white
+skinparam ActivityBorderColor #666666
+
+title "ModelsPricePredict Flow"
+
 start
-:Setup Logging and Environment (utils.py);
+#lightgrey:Setup Logging and Environment;
+
 if (EnhancedModelTrainer available?) then (yes)
-    :Use EnhancedModelTrainer (improved_modeltrainer.py);
+    #palegreen:Use EnhancedModelTrainer;
 else (no)
-    :Import Standard Models (standard_models.py);
-    :Import Improved Models (improved_models.py);
-    :Import Percentage Models (percentage_models.py);
-    :Import Advanced Models (advanced_models.py);
-
-    :Initialize All Models (ModelsPricePredict.py);
-    :Load Training Data (cleaned_data.csv);
-    :Prepare Features and Target (preprocessing.py);
-    :Impute Missing Values (sklearn SimpleImputer);
-    :Scale Features (sklearn StandardScaler);
-    :Add Engineered Features (preprocessing.py);
-
-    :Train Models;
-    :Evaluate Predictions (evaluation.py);
-    :Calculate Scores (evaluation.py);
-    :Generate Results DataFrame;
-    :Export Results to cleaned_data_results.csv;
-    :Export Predictions to cleaned_data_prediction.csv;
-    :Print Performance Summary (evaluation.py);
+    #skyblue:Import Model Libraries;
+    #skyblue:Initialize Models;
+    #aliceblue:Load Training Data;
+    #aliceblue:Prepare Features;
+    #aliceblue:Process Data;
+    #gold:Train Models;
+    #gold:Evaluate Results;
+    #mistyrose:Export CSV Files;
 endif
 
-:Save Trained Models (utils.py);
+#lightcoral:Save Trained Models;
 stop
 @enduml
