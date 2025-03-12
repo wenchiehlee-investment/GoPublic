@@ -1,6 +1,13 @@
 @startuml "TestModelsPricePredict Flow"
-!theme plain
-skinparam backgroundColor white
+
+!theme toy
+Skinparam sequenceArrowThickness 1
+skinparam ParticipantPadding 7
+skinparam BoxPadding 10
+skinparam actorStyle awesome
+skinparam LegendBorderThickness 1
+skinparam backgroundColor transparent
+
 skinparam roundCorner 8
 skinparam ArrowColor #666666
 skinparam ActivityBackgroundColor white
